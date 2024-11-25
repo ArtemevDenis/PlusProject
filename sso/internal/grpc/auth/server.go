@@ -2,11 +2,9 @@ package auth
 
 import (
 	"context"
+	ssov1 "github.com/ArtemevDenis/PlusProject/system/gen/go/sso"
 
 	"google.golang.org/grpc"
-
-	// Сгенерированный код
-	ssov1 "github.com/ArtemevDenis/"
 )
 
 type serverAPI struct {
