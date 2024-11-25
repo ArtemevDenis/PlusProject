@@ -1,0 +1,7 @@
+gateway:
+  port: 8080
+  host: localhost
+  version: 0.0.1
+quiz:
+  address: localhost
+  port: 8081
