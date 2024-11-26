@@ -3,18 +3,23 @@ package quiz
 import (
 	"gateway/internal/config"
 	"github.com/labstack/echo/v4"
+	"log/slog"
 	"net/http"
 )
 
 type Quiz struct {
 	address string
-	port    string
+	secret  string
+
+	//ssoClient grpc.Client
+	log *slog.Logger
 }
 
-func New(config *config.Config) *Quiz {
+func New(config *config.Config, log *slog.Logger) *Quiz {
 	return &Quiz{
 		address: config.Quiz.Address,
-		port:    config.Quiz.Port,
+		secret:  config.Quiz.Secret,
+		log:     log,
 	}
 }
 

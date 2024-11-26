@@ -18,7 +18,7 @@ func main() {
 
 	log := setupLogger(cfg.Env)
 
-	a, err := service.New(&cfg)
+	a, err := service.New(&cfg, log)
 	if err != nil {
 		log.Error(err.Error())
 	}

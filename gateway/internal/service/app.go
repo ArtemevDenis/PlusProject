@@ -7,6 +7,7 @@ import (
 	"github.com/labstack/echo/v4"
 	echoMiddleware "github.com/labstack/echo/v4/middleware"
 	"log"
+	"log/slog"
 )
 
 type App struct {
@@ -15,10 +16,10 @@ type App struct {
 	echo     *echo.Echo
 }
 
-func New(cfg *config.Config) (*App, error) {
+func New(cfg *config.Config, log *slog.Logger) (*App, error) {
 	a := &App{}
 
-	a.eQuiz = quiz.New(cfg)
+	a.eQuiz = quiz.New(cfg, log)
 	a.eGateway = routes.New(cfg)
 	a.echo = echo.New()
 

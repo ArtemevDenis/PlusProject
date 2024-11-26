@@ -3,5 +3,5 @@ gateway:
   host: localhost
   version: 0.0.1
 quiz:
-  address: localhost
-  port: 8081
+  address: localhost:44044
+  secret: test

@@ -9,6 +9,6 @@ type Config struct {
 	} `yaml:"gateway"`
 	Quiz struct {
 		Address string `yaml:"address"`
-		Port    string `yaml:"port"`
+		Secret  string `yaml:"secret"`
 	} `yaml:"quiz"`
 }

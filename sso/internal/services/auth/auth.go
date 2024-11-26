@@ -165,6 +165,7 @@ func (a *Auth) IsAdmin(ctx context.Context, userID int64) (bool, error) {
 
 	isAdmin, err := a.usrProvider.IsAdmin(ctx, userID)
 	if err != nil {
+		log.Error("failed to check if user is admin", sl.Err(err))
 		return false, fmt.Errorf("%s: %w", op, err)
 	}
 
