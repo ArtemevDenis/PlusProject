@@ -1,4 +1,4 @@
-module github.com/ArtemevDenis/PlusProject/system
+module github.com/ArtemevDenis/PlusProject/system/v0.0.1
 
 go 1.22.7
 
