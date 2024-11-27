@@ -1,0 +1,130 @@
+syntax = "proto3";
+
+package quiz;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "tuzov.sso.v1;ssov1";
+
+enum StatusType {
+  OK = 0;
+  ERROR = 1;
+}
+
+service Quiz {
+  rpc Generate (Void) returns (GenerateResponse); // admin only
+  rpc Update (UpdateQuizRequest) returns (UpdateQuizResponse); // admin only
+  rpc Delete (DeleteQuizRequest) returns (DeleteQuizResponse); // admin only
+  rpc Get (GetQuizRequest) returns (GetQuizResponse); // all
+  rpc AddAnswer (AddAnswersRequest) returns (AddAnswersResponse); // all
+  rpc GetAnswers (GetAnswersRequest) returns (GetAnswersResponse); // all
+  rpc GetResult (GetResultRequest) returns (GetResultResponse); // all if public
+}
+message Void {
+}
+
+message GenerateResponse {
+  string id = 1;
+}
+
+message DeleteQuizRequest {
+  string id = 1;
+}
+
+message DeleteQuizResponse {
+  StatusType status = 1;
+}
+
+enum QuestionType {
+  SINGLE_CHOICE = 0;
+  MULTIPLE_CHOICE = 1;
+  FREE_TEXT = 2;
+  SCALE = 3;
+}
+
+message QuestionOption {
+  optional string id = 1;
+  string text = 2;
+}
+
+message Dependency {
+  string question_id = 1;
+  string option_id = 2;
+  string dependent_on = 3;
+}
+
+// Question представляет вопрос в опроснике
+message Question {
+  optional string id = 1;
+  string text = 2;
+  QuestionType type = 3;
+  repeated QuestionOption options = 4;
+  optional int32 min_value = 5;
+  optional int32 max_value = 6;
+  bool is_required = 7;
+  repeated Dependency dependencies = 8;
+}
+
+message QuestionAnswer {
+  optional string id = 1;
+  string answer = 2;
+  string question_id = 3;
+  string user_id = 4;
+}
+
+message AddAnswersRequest {
+  repeated QuestionAnswer answers = 1;
+}
+
+message AddAnswersResponse {
+  StatusType status = 1;
+}
+
+message GetAnswersRequest {
+  string quiz_id = 1;
+}
+
+message GetAnswersResponse {
+  repeated QuestionAnswer answers = 1;
+}
+
+// Survey представляет опросник
+message UpdateQuizRequest {
+  string id = 1;
+  string title = 2;
+  optional google.protobuf.Timestamp end_date = 3;
+  optional int32 reward_points = 4;
+  bool is_anonymous = 5;
+  repeated Question questions = 6;
+  string author = 7;
+  bool editable = 8;
+  bool public = 9;
+}
+
+message UpdateQuizResponse {
+  StatusType status = 1;
+}
+
+message GetQuizRequest {
+  string id = 1;
+}
+
+message GetQuizResponse {
+  string id = 1;
+  string title = 2;
+  google.protobuf.Timestamp end_date = 3;
+  int32 reward_points = 4;
+  bool is_anonymous = 5;
+  repeated Question questions = 6;
+  string author = 7;
+  bool editable = 8;
+  bool public = 9;
+}
+
+message GetResultRequest {
+  string id = 1;
+}
+
+message GetResultResponse {
+  repeated QuestionAnswer answers = 1;
+}

@@ -208,7 +208,6 @@ func (x *RegisterResponse) GetUserId() int64 {
 	return 0
 }
 
-
 type LoginRequest struct {
 	state         protoimpl.MessageState
 	sizeCache     protoimpl.SizeCache
@@ -369,20 +368,20 @@ func file_sso_sso_proto_rawDescGZIP() []byte {
 
 var file_sso_sso_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_sso_sso_proto_goTypes = []any{
-	(*IsAdminRequest)(nil),   // 0: is-admin.IsAdminRequest
-	(*IsAdminResponse)(nil),  // 1: is-admin.IsAdminResponse
-	(*RegisterRequest)(nil),  // 2: is-admin.RegisterRequest
-	(*RegisterResponse)(nil), // 3: is-admin.RegisterResponse
-	(*LoginRequest)(nil),     // 4: is-admin.LoginRequest
-	(*LoginResponse)(nil),    // 5: is-admin.LoginResponse
+	(*IsAdminRequest)(nil),   // 0: auth.IsAdminRequest
+	(*IsAdminResponse)(nil),  // 1: auth.IsAdminResponse
+	(*RegisterRequest)(nil),  // 2: auth.RegisterRequest
+	(*RegisterResponse)(nil), // 3: auth.RegisterResponse
+	(*LoginRequest)(nil),     // 4: auth.LoginRequest
+	(*LoginResponse)(nil),    // 5: auth.LoginResponse
 }
 var file_sso_sso_proto_depIdxs = []int32{
-	2, // 0: is-admin.Auth.Register:input_type -> is-admin.RegisterRequest
-	4, // 1: is-admin.Auth.Login:input_type -> is-admin.LoginRequest
-	0, // 2: is-admin.Auth.IsAdmin:input_type -> is-admin.IsAdminRequest
-	3, // 3: is-admin.Auth.Register:output_type -> is-admin.RegisterResponse
-	5, // 4: is-admin.Auth.Login:output_type -> is-admin.LoginResponse
-	1, // 5: is-admin.Auth.IsAdmin:output_type -> is-admin.IsAdminResponse
+	2, // 0: auth.Auth.Register:input_type -> auth.RegisterRequest
+	4, // 1: auth.Auth.Login:input_type -> auth.LoginRequest
+	0, // 2: auth.Auth.IsAdmin:input_type -> auth.IsAdminRequest
+	3, // 3: auth.Auth.Register:output_type -> auth.RegisterResponse
+	5, // 4: auth.Auth.Login:output_type -> auth.LoginResponse
+	1, // 5: auth.Auth.IsAdmin:output_type -> auth.IsAdminResponse
 	3, // [3:6] is the sub-list for method output_type
 	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
